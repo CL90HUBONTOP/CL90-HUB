@@ -2,6 +2,7 @@
 local Players, RunService, CoreGui, Lighting, PathfindingService, UserInputService, Workspace = game:GetService("Players"), game:GetService("RunService"), game:GetService("CoreGui"), game:GetService("Lighting"), game:GetService("PathfindingService"), game:GetService("UserInputService"), game:GetService("Workspace")
 local LocalPlayer, Camera = Players.LocalPlayer, Workspace.CurrentCamera
 
+
 local ScreenGui = Instance.new("ScreenGui", CoreGui)
 ScreenGui.Name = "CL90HubV1_RedBlue"
 ScreenGui.ResetOnSpawn = false
