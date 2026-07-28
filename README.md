@@ -1,5 +1,5 @@
-# CL90-HUB
--- [[ CL90 HUB V1 - SQUARE BUILD W/ FIXED TEAM RESET & DC LINK ]] --
+
+-- [[ CL90 HUB V1 - FULL BUILD ]] --
 local Players, RunService, CoreGui, Lighting, PathfindingService, UserInputService, Workspace = game:GetService("Players"), game:GetService("RunService"), game:GetService("CoreGui"), game:GetService("Lighting"), game:GetService("PathfindingService"), game:GetService("UserInputService"), game:GetService("Workspace")
 local LocalPlayer, Camera = Players.LocalPlayer, Workspace.CurrentCamera
 
@@ -38,7 +38,7 @@ local function createUI(cls, props)
     return inst
 end
 
--- Square Main Frame (160x160)
+-- Main Frame
 local MainFrame = createUI("Frame", {Parent = ScreenGui, Size = UDim2.new(0, 160, 0, 160), Position = UDim2.new(0.5, -80, 0.5, -80), BackgroundColor3 = Color3.fromRGB(12, 12, 18), Active = true, Visible = false})
 createUI("UICorner", {Parent = MainFrame, CornerRadius = UDim.new(0, 8)})
 createUI("UIStroke", {Parent = MainFrame, Color = Color3.fromRGB(235, 45, 45), Thickness = 2})
@@ -79,7 +79,7 @@ local SeparateBtn = makeBtn(SettingsPage, "Mobile Buttons: OFF", UDim2.new(0, 0,
 local TeamResetBtn = makeBtn(SettingsPage, "Team Reset", UDim2.new(0, 0, 0, 48), Color3.fromRGB(45, 140, 255), UDim2.new(1, 0, 0, 20))
 local JoinDcBtn = makeBtn(SettingsPage, "Join DC", UDim2.new(0, 0, 0, 72), Color3.fromRGB(235, 45, 45), UDim2.new(1, 0, 0, 20))
 
--- DISCORD NOTIFICATION BANNER
+-- Discord Notification
 local DcNotice = createUI("Frame", {Parent = ScreenGui, Size = UDim2.new(0, 220, 0, 30), Position = UDim2.new(0.5, -110, 0.05, 0), BackgroundColor3 = Color3.fromRGB(12, 12, 18), Visible = false, ZIndex = 40})
 createUI("UICorner", {Parent = DcNotice, CornerRadius = UDim.new(0, 6)})
 createUI("UIStroke", {Parent = DcNotice, Color = Color3.fromRGB(80, 255, 120), Thickness = 2})
@@ -95,7 +95,7 @@ JoinDcBtn.MouseButton1Click:Connect(function()
     end)
 end)
 
--- SECURITY LOCK (KEY: CL90HUB)
+-- Key System (Key: CL90HUB)
 local BlurEffect = createUI("BlurEffect", {Parent = Lighting, Size = 24})
 local LockScreen = createUI("Frame", {Parent = ScreenGui, Size = UDim2.new(0, 160, 0, 160), Position = UDim2.new(0.5, -80, 0.5, -80), BackgroundColor3 = Color3.fromRGB(12, 12, 18), ZIndex = 30})
 createUI("UICorner", {Parent = LockScreen, CornerRadius = UDim.new(0, 8)})
@@ -136,7 +136,7 @@ SubmitBtn.MouseButton1Click:Connect(function()
     end
 end)
 
--- ESP & TEAMMATES SYSTEM
+-- ESP & Teammates
 local selectedTarget, highlightsActive, highlights, teammatesMode, teammates = nil, false, {}, false, {}
 local function isTeammate(p) return table.find(teammates, p) ~= nil end
 local function removeHighlight(p) if highlights[p] then pcall(function() highlights[p]:Destroy() end) highlights[p] = nil end end
@@ -230,7 +230,7 @@ UserInputService.InputBegan:Connect(function(input)
     end
 end)
 
--- TELEPORT & TRACKING
+-- Teleport & Tracking
 local tracking, trackConnection = false, nil
 
 local function getActiveTarget()
@@ -307,7 +307,7 @@ local function toggleTrack()
 end
 TrackButton.MouseButton1Click:Connect(toggleTrack)
 
--- MOBILE PILLS
+-- Mobile Pills
 local separateActive, createdPills = false, {}
 local function createAZButton(text, defaultPos, strokeColor, callback)
     local pill = createUI("Frame", {Parent = ScreenGui, Size = UDim2.new(0, 150, 0, 34), Position = defaultPos, BackgroundColor3 = Color3.fromRGB(12, 12, 18), Active = true})
